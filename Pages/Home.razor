@@ -1,0 +1,33 @@
+﻿@*@page "/"
+
+<h1>Upcoming Events</h1>
+
+<EventCard EventName="Tech Conference"
+           EventDate="@DateTime.Now.AddDays(7)"
+           Location="Islamabad" />
+
+<EventCard EventName="Music Festival"
+           EventDate="@DateTime.Now.AddDays(14)"
+           Location="Rawalpindi" />
+*@
+@page "/"
+@using EventEase.Models
+
+<h1>Upcoming Events</h1>
+
+@foreach (var ev in Events)
+{
+    <EventCard EventName="@ev.Name"
+               EventDate="@ev.Date"
+               Location="@ev.Location" />
+}
+
+@code {
+    private List<EventModel> Events = new()
+    {
+        new EventModel { Name = "Tech Conference", Date = DateTime.Now.AddDays(7), Location = "Islamabad" },
+        new EventModel { Name = "Music Festival", Date = DateTime.Now.AddDays(14), Location = "Rawalpindi" },
+        new EventModel { Name = "Corporate Meetup", Date = DateTime.Now.AddDays(21), Location = "Karachi" }
+    };
+}
+

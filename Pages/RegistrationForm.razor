@@ -1,0 +1,32 @@
+﻿@page "/registration"
+@using EventEase.Models
+
+<h3>Event Registration</h3>
+
+<EditForm Model="@registration" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>Name:</label>
+        <InputText @bind-Value="registration.Name" />
+        <ValidationMessage For="@(() => registration.Name)" />
+    </div>
+
+    <div>
+        <label>Email:</label>
+        <InputText @bind-Value="registration.Email" />
+        <ValidationMessage For="@(() => registration.Email)" />
+    </div>
+
+    <button type="submit">Register</button>
+</EditForm>
+
+@code {
+    private RegistrationModel registration = new();
+
+    private void HandleValidSubmit()
+    {
+        Console.WriteLine($"Registered: {registration.Name}, {registration.Email}");
+    }
+}

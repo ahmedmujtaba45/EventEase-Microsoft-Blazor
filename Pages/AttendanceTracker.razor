@@ -1,0 +1,14 @@
+﻿@page "/attendance"
+@inject EventEase.Services.SessionService Session
+
+<h3>Attendance Tracker</h3>
+
+@if (Session.IsLoggedIn)
+{
+    <p>User: @Session.CurrentUser is attending the event.</p>
+}
+else
+{
+    <p>No user logged in. Please register first.</p>
+}
+
